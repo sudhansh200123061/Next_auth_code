@@ -36,7 +36,7 @@ export default function ForgetPasswordPage() {
                 setError(response.data.error || "");
                 setSuccess(response.data.message || "");
                 // await sleep(2000);
-                if(success)
+                if(response.data.message)
                     router.push("/login");
             } catch (err: Error | any) {
                 setError(err.message);
