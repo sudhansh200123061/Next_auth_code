@@ -5,7 +5,13 @@ import nodemailer from "nodemailer";
 import User from "@/models/userModel";
 import bcrypt from "bcryptjs";
 
-export const sendEmail = async({email, emailType, userId}: any) => {
+interface SendEmailParams {
+  email: string;
+  emailType: "VERIFY" | "RESET"; // limit allowed values
+  userId: string;
+}
+
+export const sendEmail = async({email, emailType, userId}: SendEmailParams) => {
     try{
         
 
@@ -23,7 +29,7 @@ export const sendEmail = async({email, emailType, userId}: any) => {
             });
         }
 
-        var transport = nodemailer.createTransport({
+        const transport = nodemailer.createTransport({
             // Looking to send emails in production? Check out our Email API/SMTP product!
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
@@ -44,9 +50,9 @@ export const sendEmail = async({email, emailType, userId}: any) => {
             html: `<p>Click <a href="${process.env.DOMAIN}/${reqType}?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}. This link will expire in one hour.</p>`
         }
 
-        const mailResponse = await transport.sendMail(mailOptions);
+        await transport.sendMail(mailOptions);
     }
-    catch(err: any){
+    catch(err: Error | any){
         throw new Error(err.message);
     }
 }

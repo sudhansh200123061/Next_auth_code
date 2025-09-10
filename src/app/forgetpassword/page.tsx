@@ -1,15 +1,13 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect} from "react";
 import { useRouter } from "next/navigation";
-import { set } from "mongoose";
-// import { sendEmail } from "@/helpers/mailer";
+
 
 export default function ForgetPasswordPage() {
 
     const [token, setToken] = useState("");
     const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
     const [success, setSuccess] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,7 +37,7 @@ export default function ForgetPasswordPage() {
                 setSuccess(response.data.message || "");
                 // await sleep(2000);
                 router.push("/login");
-            } catch (err: any) {
+            } catch (err: Error | any) {
                 setError(err.message);
             }
         }

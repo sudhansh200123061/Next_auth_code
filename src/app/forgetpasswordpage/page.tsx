@@ -1,8 +1,8 @@
 
 "use client";
 import axios from "axios";
-import { useState, useEffect, use } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect} from "react";
+
 
 
 
@@ -27,7 +27,7 @@ export default function ForgetPasswordPage() {
             setSuccess(response.data.message || "");
             console.log(response);
         } 
-        catch(err:any){
+        catch(err: Error | any){
             console.log(err);
             setError(err.message);
         }

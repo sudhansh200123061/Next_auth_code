@@ -1,9 +1,8 @@
 "use client";
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { set } from "mongoose";
 import toast from "react-hot-toast";
 
 export default function SignUpPage(){
@@ -32,7 +31,7 @@ export default function SignUpPage(){
             console.log(response.data);
             router.push("/login");
         }
-        catch(err:any){
+        catch(err: Error | any){
             console.log(err);
             toast.error(err.message);
         }

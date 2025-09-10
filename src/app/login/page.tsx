@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -62,7 +62,7 @@ export default function LoginPage(){
                 onChange={(e) => setUser({...user, password: e.target.value})}
                 placeholder="password"
             />
-            <button className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none" type="submit" onClick={onLogIn}>Login here</button>
+            <button className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none" type="submit" onClick={onLogIn}>{buttonDisabled?"No login":"Login here"}</button>
             <Link href="/signup">SignUp here</Link>
             <Link href="/forgetpasswordpage">Forget password</Link>
         </div>

@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
         await user.save();
         return NextResponse.json({message: "Password has been reset successfully", success: true});
         
-    } catch (error: any) {
+    } catch (error: Error | any) {
        
         return NextResponse.json({error: error.message}, {status: 500});
     }

@@ -1,5 +1,12 @@
 
-export default function UserProfile({params}: any) {
+interface Props {
+  params: {
+    id: string;   // replace with your dynamic segment name
+  };
+}
+
+
+export default function UserProfile({params}: Props | any) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1>Profile</h1>

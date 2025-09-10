@@ -2,7 +2,6 @@ import {connect} from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import {NextRequest, NextResponse} from "next/server";
 import bcrypt from "bcryptjs";
-import { send } from "process";
 import { sendEmail } from "@/helpers/mailer";
 
 export async function POST(request: NextRequest) {
@@ -37,7 +36,7 @@ export async function POST(request: NextRequest) {
             savedUser
         })
 
-    } catch (error: any) {
+    } catch (error: Error | any) {
         return NextResponse.json({error: error.message}, {status: 500});
     }
 }

@@ -15,7 +15,7 @@ export const GET = async (request: NextRequest) => {
             message: "user found",
             data: user
         });
-    } catch (error: any) {
+    } catch (error: Error | any) {
         return NextResponse.json({ error: error.message }, { status: 500 });   
     }
 }
