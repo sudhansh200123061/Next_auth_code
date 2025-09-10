@@ -47,7 +47,7 @@ export const sendEmail = async({email, emailType, userId}: SendEmailParams) => {
             to: email,
             subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
 
-            html: `<p>Click <a href="${process.env.DOMAIN}/${reqType}?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}. This link will expire in one hour.</p>`
+            html: `<p>Click <a href="${process.env.DOMAIN}/${reqType}?token=${hashedToken}">${process.env.DOMAIN}/${reqType}?token=${hashedToken}</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}. This link will expire in one day.</p>`
         }
 
         await transport.sendMail(mailOptions);
